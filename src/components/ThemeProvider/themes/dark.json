@@ -1,0 +1,14 @@
+{
+  "page": {
+    "background": "#1b1b1b",
+    "color": "#e2e2e2"
+  },
+  "button": {
+    "background": "#ff5757",
+    "boxShadowColor": "#5b5b5b",
+    "outlineColor": "#e2e2e2",
+    "hovered": {
+      "background": "#FF4747"
+    }
+  }
+}
