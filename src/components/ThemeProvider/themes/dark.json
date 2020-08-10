@@ -10,5 +10,11 @@
     "hovered": {
       "background": "#FF4747"
     }
+  },
+  "project": {
+    "borderColor": "#eee",
+    "hoverDetail": "#ff5757",
+    "background": "#292929",
+    "typeColor": "#b2b2b2" 
   }
 }
