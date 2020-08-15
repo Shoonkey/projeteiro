@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 
 import { ThemeContext } from '../ThemeProvider';
 
-export const Container = styled(Link)`
+// NOTE: the Link component is wrapped here so that the `theme` prop isn't passed down to
+// the DOM element. This prevents the anchor tag from having an attribute theme set to
+// "[object Object]"
+const PropSafeLink = ({ theme, ...props }) => <Link {...props} />;
+
+export const Container = styled(PropSafeLink)`
 
   position: relative;
   text-decoration: none;

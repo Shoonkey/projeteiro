@@ -25,8 +25,8 @@ const projects = [
     id: 4,
     title: "Example #4",
     type: "Test"
-  },
-]
+  }
+];
 
 function Home(){
 
