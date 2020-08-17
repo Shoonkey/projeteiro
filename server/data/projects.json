@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Example #1",
+    "type": "Website"
+  },
+  {
+    "id": 2,
+    "title": "Example #2",
+    "type": "Drawing"
+  },
+  {
+    "id": 3,
+    "title": "Example #3",
+    "type": "Mobile app"
+  },
+  {
+    "id": 4,
+    "title": "Example #4",
+    "type": "Test"
+  }
+]

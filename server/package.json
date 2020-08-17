@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon -r esm",
+    "start:prod": "cross-env NODE_ENV=production node -r esm src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "esm": "^3.2.25",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "nodemon": "^2.0.4"
+  }
+}
