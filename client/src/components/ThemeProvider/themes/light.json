@@ -16,5 +16,17 @@
     "hoverDetail": "#ff5757",
     "background": "#d2d2d2",
     "typeColor": "#2b2b2b" 
+  },
+  "error": {
+    "background": "#c2c2c2",
+    "color": "darkred",
+    "refreshButton": {
+      "background": "transparent",
+      "color": "black",
+      "hovered": {
+        "background": "transparent",
+        "color": "darkred"
+      }
+    }
   }
 }
