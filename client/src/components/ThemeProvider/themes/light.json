@@ -28,5 +28,12 @@
         "color": "darkred"
       }
     }
+  },
+  "dialog": {
+    "background": "#c2c2c2",
+    "color": "#1b1b1b",
+    "closeButton": {
+      "color": "#1b1b1b"
+    }
   }
 }

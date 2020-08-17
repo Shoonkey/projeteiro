@@ -30,5 +30,7 @@ export const Container = styled.div`
   .option-container {
     margin-left: auto;
     margin-right: 1.5em;
+
+    button { margin-right: .2em; }
   }
 `;
