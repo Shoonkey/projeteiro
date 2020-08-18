@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '../Button';
+import Tooltip from '../Tooltip';
 import { ThemedContainer } from './styles';
 
 function Dialog({ active, onClose, children, ...props }){
@@ -12,7 +13,14 @@ function Dialog({ active, onClose, children, ...props }){
       {...props}
     >
       <div className="dialog" role="dialog">
-        <Button icon="close" className="close-btn" onClick={onClose} />
+        <Tooltip content="Close dialog">
+          <Button 
+            icon="close" 
+            ariaLabel="Close dialog"
+            className="close-btn" 
+            onClick={onClose} 
+          />
+        </Tooltip>
         <div className="dialog-content">
           {children}
         </div>

@@ -4,8 +4,9 @@ import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
 import ProjectList from '../../components/ProjectList';
 import Error from '../../components/Error';
-
+import Tooltip from '../../components/Tooltip';
 import { useAPI } from '../../util/api';
+
 import { Container } from './styles';
 
 function Home(){
@@ -15,7 +16,9 @@ function Home(){
   return (
     <Container>
       <Navbar />
-      <Button fab icon="add-outline" />
+      <Tooltip content="Add new project" placement="left">
+        <Button fab icon="add-outline" ariaLabel="Add new project" />
+      </Tooltip>
       <main>
         <h1 className="title">Current projects</h1>
         { loading && <p>Loading...</p>}

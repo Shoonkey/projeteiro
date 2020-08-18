@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 import Button from '../Button';
 import Dialog from '../Dialog';
+import Tooltip from '../Tooltip';
 import { ThemeContext } from '../ThemeProvider';
 import { Container } from './styles';
 
-function Navbar({ openDialog }) {
+function Navbar() {
 
   const { themeName, setTheme } = useContext(ThemeContext);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -17,14 +18,20 @@ function Navbar({ openDialog }) {
         <h1 className="logo">Projeteiro</h1>
       </Link>
       <div className="option-container">
-        <Button
-          icon="information-circle-outline"
-          onClick={() => setDialogOpen(true)}
-        />
-        <Button 
-          icon="contrast-outline" 
-          onClick={() => setTheme(themeName === "dark" ? "light" : "dark")}
-        />
+        <Tooltip content="Info">
+          <Button
+            icon="information-circle-outline"
+            ariaLabel="Information"
+            onClick={() => setDialogOpen(true)}
+          />
+        </Tooltip>
+        <Tooltip content="Change theme">
+          <Button 
+            icon="contrast-outline" 
+            ariaLabel="Change theme"
+            onClick={() => setTheme(themeName === "dark" ? "light" : "dark")}
+          />
+        </Tooltip>
       </div>
       <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)}>
         <h1 className="title">A very good title</h1>

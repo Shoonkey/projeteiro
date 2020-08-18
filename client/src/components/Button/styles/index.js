@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -24,13 +24,11 @@ const LinkContainer = styled(Link)`
 
 `;
 
-export function ThemedContainer({ to, onClick, ...generalProps }){ 
-
+export const ThemedContainer = forwardRef(({ to, onClick, ...generalProps }, ref) => {
   const { theme } = useContext(ThemeContext);
 
   const Container = to ? LinkContainer : ButtonContainer;
   const applicableProps = to ? { to } : { onClick };
-
-  return <Container theme={theme} {...applicableProps} {...generalProps} />;
-
-}
+  
+  return <Container theme={theme} ref={ref} {...applicableProps} {...generalProps} />;
+});
