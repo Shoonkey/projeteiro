@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../Button';
+import Tooltip from '../Tooltip';
 import { ThemedContainer } from './styles';
 
 function Error({ message }){
@@ -11,7 +12,9 @@ function Error({ message }){
   return (
     <ThemedContainer>
       <p>{message}</p>
-      <Button icon="refresh" onClick={() => history.go(0)} />
+      <Tooltip content="Refresh page">
+        <Button icon="refresh" ariaLabel="Refresh page" onClick={() => history.go(0)} />
+      </Tooltip>
     </ThemedContainer>
   );
 
