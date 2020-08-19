@@ -12,6 +12,19 @@ const Container = styled.div`
   color: ${props => props.theme.page.color};
   transition: background .4s, color .4s;
 
+  main {
+    width: 85%;
+    margin: 1em auto;
+
+    > .title { 
+      font-family: Saira;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-size: 1.8em; 
+      margin-bottom: 1em; 
+    }
+  }
+
 `;
 
 export function ThemedContainer(props){ 
