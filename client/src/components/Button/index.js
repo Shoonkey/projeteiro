@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
 import Icon from '../Icon';
-import { ThemedContainer } from './styles';
+import { Container } from './styles';
 
 // Button was turned into a component that forwards its reference so that @tippyjs/react (current 
 // tooltip lib) is able to work with it intuitively
@@ -13,9 +13,9 @@ const Button = forwardRef(({ type, onClick, fab, icon, ariaLabel, children, ...p
     );
 
   return (
-    <ThemedContainer ref={ref} type={type} onClick={onClick} fab={fab} icon={icon} {...props}>
+    <Container ref={ref} type={type} onClick={onClick} fab={fab} icon={icon} {...props}>
       { icon ? <Icon name={icon} aria-label={ariaLabel} /> : children}
-    </ThemedContainer>
+    </Container>
   );
 
 });

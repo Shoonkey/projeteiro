@@ -2,12 +2,12 @@ import React from 'react';
 
 import Button from '../Button';
 import Tooltip from '../Tooltip';
-import { ThemedContainer } from './styles';
+import { Container } from './styles';
 
 function Dialog({ active, onClose, children, ...props }){
 
   return (
-    <ThemedContainer 
+    <Container 
       className={active && "active"} 
       onClick={onClose}
       {...props}
@@ -25,7 +25,7 @@ function Dialog({ active, onClose, children, ...props }){
           {children}
         </div>
       </div>
-    </ThemedContainer>
+    </Container>
   );
 
 };

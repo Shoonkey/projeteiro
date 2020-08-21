@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { ThemedContainer } from './styles';
+import { Container } from './styles';
 
 function Page({ children, ...props }) {
-  return <ThemedContainer {...props}>{children}</ThemedContainer>;
+  return <Container {...props}>{children}</Container>;
 }
 
 export default Page;

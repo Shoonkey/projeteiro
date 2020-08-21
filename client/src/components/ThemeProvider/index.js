@@ -1,6 +1,17 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext, forwardRef } from 'react';
 
 export const ThemeContext = createContext(null);
+
+export function withTheme(Component){
+
+  const ThemedComponent = forwardRef((props, ref) => {
+    const { theme } = useContext(ThemeContext);
+    return <Component innerRef={ref} theme={theme} {...props} />
+  });
+
+  return ThemedComponent;
+  
+}
 
 function ThemeProvider({ children }){
 

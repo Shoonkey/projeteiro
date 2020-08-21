@@ -1,7 +1,7 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-import { ThemedContainer } from './styles';
+import { Container } from './styles';
 
 function ProjectCard({ id, title, type, index }){
 
@@ -9,7 +9,7 @@ function ProjectCard({ id, title, type, index }){
     <Draggable draggableId={String(id)} index={index}>
       {
         (provided) => (
-          <ThemedContainer to={`/project/${id}`}>
+          <Container to={`/project/${id}`} className="project-card">
             <div 
               className="project"
               ref={provided.innerRef}
@@ -19,7 +19,7 @@ function ProjectCard({ id, title, type, index }){
               <h1 className="title">{title}</h1>
               <p className="type">{type}</p>
             </div>
-          </ThemedContainer>
+          </Container>
         )
       }
     </Draggable>

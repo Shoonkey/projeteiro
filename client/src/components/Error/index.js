@@ -3,19 +3,19 @@ import { useHistory } from 'react-router-dom';
 
 import Button from '../Button';
 import Tooltip from '../Tooltip';
-import { ThemedContainer } from './styles';
+import { Container } from './styles';
 
 function Error({ message }){
 
   const history = useHistory();
 
   return (
-    <ThemedContainer>
+    <Container>
       <p>{message}</p>
       <Tooltip content="Refresh page">
         <Button icon="refresh" ariaLabel="Refresh page" onClick={() => history.go(0)} />
       </Tooltip>
-    </ThemedContainer>
+    </Container>
   );
 
 };

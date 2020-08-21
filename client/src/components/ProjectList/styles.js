@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { Container as ProjectCard } from '../ProjectCard/styles';
-
 export const Container = styled.div`
 
   flex-grow: 1;
@@ -9,7 +7,7 @@ export const Container = styled.div`
 
   .row {
     overflow-x: hidden; /* workaround while making the rightmost element wrap is still an issue */
-    ${ProjectCard} {
+    .project-card {
       width: calc(100% / ${props => props.cols});
     }
   } 
