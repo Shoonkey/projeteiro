@@ -6,7 +6,7 @@ export function withTheme(Component){
 
   const ThemedComponent = forwardRef((props, ref) => {
     const { theme } = useContext(ThemeContext);
-    return <Component innerRef={ref} theme={theme} {...props} />
+    return <Component ref={ref} theme={theme} {...props} />
   });
 
   return ThemedComponent;
