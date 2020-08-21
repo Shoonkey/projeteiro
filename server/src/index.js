@@ -20,7 +20,7 @@ app.get('/project/all', (req, res) => {
 
 app.get('/project/:id', (req, res) => {
   try {
-    const data = Project.getById(req.id);
+    const data = Project.getById(req.params.id);
     res.status(200).json(data);
   } catch (e) {
     console.error(e);

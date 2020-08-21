@@ -1,0 +1,26 @@
+{
+  "title": "Example #1",
+  "type": "Website",
+  "track": {
+    "columnOrder": ["dev'ing", "test", "done"],
+    "columns": {
+      "dev'ing": ["card-2", "card-3"], 
+      "test": ["card-4"], 
+      "done": ["card-1"]
+    },
+    "cards": {
+      "card-1": {
+        "title": "Card #1"
+      },
+      "card-2": {
+        "title": "Card #2"
+      },
+      "card-3": {
+        "title": "Card #3"
+      },
+      "card-4": {
+        "title": "Card #4"
+      }
+    }
+  }
+}
