@@ -1,19 +1,16 @@
-import React, { useRef, cloneElement } from 'react';
-import Tippy from '@tippyjs/react';
+import { useRef, cloneElement, useLayoutEffect } from 'react';
+import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-// A pretty redundant component built so tippy.js's default CSS can be imported once instead of
-// every time its tooltip component is used
 function Tooltip({ children, ...props }){
 
   const ref = useRef();
 
-  return (
-    <>
-      {children && cloneElement(children, { ref })}
-      <Tippy reference={ref} {...props} />
-    </>
-  );
+  useLayoutEffect(() => {
+    tippy(ref.current, props);
+  });
+
+  return children && cloneElement(children, { ref });
 };
 
 export default Tooltip;
