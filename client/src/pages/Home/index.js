@@ -30,7 +30,7 @@ function Home(){
         />
       </Tooltip>
       <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)}>
-        <h1 className="title">Novo projeto</h1>
+        <h1 className="title">New project</h1>
         <NewProjectForm className="description" />
       </Dialog>
       <main>
