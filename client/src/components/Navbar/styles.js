@@ -33,4 +33,8 @@ export const Container = styled.div`
 
     button { margin-right: .2em; }
   }
+
+  .info-dialog .description p {
+    text-indent: 1em;
+  }
 `;

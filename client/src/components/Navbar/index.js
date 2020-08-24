@@ -33,21 +33,18 @@ function Navbar() {
           />
         </Tooltip>
       </div>
-      <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)}>
-        <h1 className="title">A very good title</h1>
+      <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)} className="info-dialog">
+        <h1 className="title">About <span style={{ color: "#ff5757" }}>Projeteiro</span></h1>
         <div className="description">
           <p>
-            Esse pariatur tempor laboris laborum veniam et sunt commodo nisi laboris enim culpa ut eiusmod. Irure irure ad Lorem consectetur nulla. Sunt cupidatat quis consequat ipsum. Consectetur dolor reprehenderit sit nisi ad labore consectetur et Lorem amet anim occaecat dolor. Fugiat magna quis elit pariatur est nisi. Pariatur ipsum sunt ad voluptate ea.
-            Anim officia velit do ut nulla aliquip commodo pariatur reprehenderit irure. 
+            Projeteiro is a tool for managing your projects completely locally. It requires no data
+            connection and also has all data exposed on the server folder (which is why it's only
+            supposed to be ran locally) so you can modify or replace it however you want.
           </p>
           <p>
-            Velit reprehenderit aliqua aute amet duis in magna dolore dolor amet. Fugiat nulla aute eiusmod proident enim esse incididunt aliquip sint exercitation duis do. Non ipsum mollit sint occaecat. Est exercitation aute commodo duis irure eu.
-          </p>
-          <p>
-            Culpa aute commodo ad consequat Lorem cupidatat pariatur ex voluptate irure. Excepteur do velit aliqua et aliqua aute adipisicing nisi. Anim deserunt velit duis culpa sunt do. Nisi in ipsum et nulla proident ea aliqua sunt. Eiusmod qui pariatur eiusmod sint excepteur esse eu. Nulla sunt nulla mollit est nisi. Commodo laboris excepteur labore in mollit.
-          </p>
-          <p>
-            Consectetur officia adipisicing aliquip in adipisicing ad ullamco nulla nisi culpa velit proident. Laboris quis voluptate enim veniam adipisicing cillum occaecat voluptate quis. Irure ex Lorem voluptate sit ipsum. Dolor proident commodo mollit cillum ut exercitation pariatur ullamco eiusmod nostrud ea nulla. Consectetur do quis do cillum tempor quis non.
+            Through this website it'll be possible to create, modify and track info about ideally
+            any project. The tracking system has drag-and-drop boards and cards to organize tasks,
+            just like other project tracking apps on the web.
           </p>
         </div>
       </Dialog>
