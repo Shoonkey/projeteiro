@@ -62,11 +62,14 @@ export const Container = withTheme(
         font-size: .9em;
         letter-spacing: .7px;
 
-        .title { font-family: Saira; }
+        .title { 
+          font-family: Saira;
+          margin-bottom: .5em;
+        }
 
-        .title, .description p {
+        .title, .description {
           line-height: 1.8em;
-          text-indent: 2rem;
+          margin-left: 2rem;
           text-align: justify;
         }
 
