@@ -1,14 +1,15 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import Button from '../Button';
 import Tooltip from '../Tooltip';
 import { Container } from './styles';
 
-function Dialog({ active, onClose, children, ...props }){
+function Dialog({ active, onClose, children, className, ...props }){
 
   return (
     <Container 
-      className={active && "active"} 
+      className={clsx(className, active && "active")} 
       onClick={onClose}
       {...props}
     >
