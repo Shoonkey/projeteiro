@@ -1,27 +1,31 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const api = axios.create({ baseURL: "http://localhost:8000" });
 
-export function useAPI(method, url, params){
+export function useAPI(method, url){
   
   // console.log(`useAPI('${method}', '${url}', ${JSON.stringify(params)})`);
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-
-  const config = { url, method };
-
-  if (method === "GET")
-    config.params = params;
-  else
-    config.data = params;
   
-  useEffect(() => {
+  return {
+    data, 
+    error,
+    loading: data == null && error == null,
+    callback: params => {
 
-    if (data != null) return;
+      if (data != null || error != null) return;
 
-    api.request(config)
+      const config = { url, method };
+
+      if (method === "GET")
+        config.params = params;
+      else
+        config.data = params;
+      
+      api.request(config)
       .then(res => res.data)
       .then(setData)
       .catch(error => {
@@ -40,10 +44,7 @@ export function useAPI(method, url, params){
         setError("Unable to send request to API");
 
       });
-
-  }, [config, data]);
-
-  
-  return [data, data == null && error == null, error];
+    }
+  };
     
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Navbar from '../../components/Navbar';
 import Button from '../../components/Button';
@@ -11,7 +11,11 @@ import { Container } from './styles';
 
 function Home(){
 
-  const [projects, loading, error] = useAPI("GET", "/project/all");
+  const { data: projects, loading, error, callback } = useAPI("GET", "/project/all");
+
+  useEffect(() => {
+    callback();
+  });
 
   return (
     <Container>
