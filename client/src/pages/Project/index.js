@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
@@ -13,8 +13,12 @@ function Project({ cardInfo }){
 
   const tabs = ["track", "notes"];
 
-  const [project, loading, error] = useAPI("GET", `/project/${id}`);
+  const { data: project, loading, error, callback } = useAPI("GET", `/project/${id}`);
   const [activeTab, setActiveTab] = useState(tabs[0]);
+
+  useEffect(() => {
+    callback()
+  });
 
   return (
     <Container>
