@@ -12,7 +12,7 @@ function Dialog({ active, onClose, children, ...props }){
       onClick={onClose}
       {...props}
     >
-      <div className="dialog" role="dialog">
+      <div className="dialog" role="dialog" onClick={e => e.stopPropagation()}>
         <Tooltip content="Close dialog">
           <Button 
             icon="close" 
