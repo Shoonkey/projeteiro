@@ -47,7 +47,7 @@ export class Project {
     };
   
     try {
-      fs.writeFileSync(`../data/project-${meta.nextProjectID}.json`, newProject);
+      fs.writeFileSync(`${process.cwd()}/data/project-${meta.nextProjectID}.json`, newProject);
       setMetadata({ ...meta, nextProjectID: meta.nextProjectID + 1 });
       return newProject;
     } catch (e) {

@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const METADATA_PATH = "../../data/meta.json";
+const METADATA_PATH = process.cwd() + "/data/meta.json";
 
 export function getMetadata(){
   return require(METADATA_PATH);
