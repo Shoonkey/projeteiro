@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { getMetadata, setMetadata } from './util';
+import { getMetadata, setMetadata, pushToProjectsList, toJSONString } from './util';
 
 export class Project {
 
@@ -47,9 +47,17 @@ export class Project {
     };
   
     try {
-      fs.writeFileSync(`${process.cwd()}/data/project-${meta.nextProjectID}.json`, newProject);
+
+      fs.writeFileSync(
+        `${process.cwd()}/data/project-${meta.nextProjectID}.json`, 
+        toJSONString(newProject)
+      );
+
+      pushToProjectsList(newProject);
       setMetadata({ ...meta, nextProjectID: meta.nextProjectID + 1 });
+
       return newProject;
+
     } catch (e) {
       console.error(e);
       throw new Error("Failed to save project into a new file");

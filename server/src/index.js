@@ -6,6 +6,7 @@ const app = express();
 const port = 8000;
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 
 app.get('/project/all', (req, res) => {
