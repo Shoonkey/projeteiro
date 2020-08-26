@@ -1,3 +1,5 @@
+import api, { formatError } from '../../util/api';
+
 export function splitProjectsIntoRows(colsPerRow, projectList){
   const rowNum = Math.ceil(projectList.length / colsPerRow);
   let content = [];
@@ -15,7 +17,7 @@ export function splitProjectsIntoRows(colsPerRow, projectList){
 export function moveCard(result, config){
 
   const { source, destination } = result;
-  const { list, setList, cols } = config;
+  const { list, setList, setError, cols } = config;
 
   // Drag was cancelled
   if (!destination) return;
@@ -36,8 +38,13 @@ export function moveCard(result, config){
   // insert it at the position of the targeted card, subsequently moving target and next cards one
   // index forward
   newList.splice(targetOriginalIdx, 0, droppedProject);
-
   setList(newList);
 
+  api.post("/project/move", { sourceIndex: droppedOriginalIdx, targetIndex: targetOriginalIdx })
+    .then(res => res.data)
+    .catch(e => {
+      setError(formatError(e));
+      setList(list);
+    });
 
 }

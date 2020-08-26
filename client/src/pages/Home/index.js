@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Button from '../../core/Button';
 import Tooltip from '../../core/Tooltip';
 import Dialog from '../../core/Dialog';
 import Navbar from '../../components/Navbar';
 import ProjectList from '../../components/ProjectList';
-import Error from '../../core/Error';
 import NewProjectForm from '../../forms/NewProjectForm';
-import { useAPI } from '../../util/api';
 
 import { Container } from './styles';
 
 function Home(){
 
-  const { data: projects, loading, error, callback } = useAPI("GET", "/project/all");
   const [dialogOpen, setDialogOpen] = useState(false);
-
-  useEffect(() => {
-    callback();
-  });
 
   return (
     <Container>
@@ -34,10 +27,7 @@ function Home(){
         <NewProjectForm className="description" />
       </Dialog>
       <main>
-        <h1 className="title">Current projects</h1>
-        { loading && <p>Loading...</p>}
-        { error && <Error message={error} /> }
-        { projects && <ProjectList projects={projects} cols={3} /> }
+        <ProjectList cols={3} />
       </main>
     </Container>
   );

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Error from '../../core/Error';
 import ProjectTrack from '../../components/ProjectTrack';
-import { useAPI } from '../../util/api';
+import api, { formatError } from '../../util/api';
 import { Container, Tab } from './styles';
 
 function Project({ cardInfo }){
@@ -13,18 +13,22 @@ function Project({ cardInfo }){
 
   const tabs = ["track", "notes"];
 
-  const { data: project, loading, error, callback } = useAPI("GET", `/project/${id}`);
+  const [project, setProject] = useState(null);
+  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   useEffect(() => {
-    callback()
-  });
+    api.get("/project/" + id)
+      .then(res => res.data)
+      .then(setProject)
+      .catch(e => setError(formatError(e)));
+  }, [id]);
 
   return (
     <Container>
       <Navbar />
       <main className="project">
-        { loading && <p>Loading...</p> }
+        { (!project && !error) && <p>Loading...</p> }
         { error && <Error message={error} /> }
         { 
           project && (
