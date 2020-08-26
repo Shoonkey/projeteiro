@@ -41,6 +41,18 @@ app.post('/project/new', (req, res) => {
   }
 });
 
+app.post('/project/move', (req, res) => {
+  const { sourceIndex, targetIndex } = req.body;
+  
+  try {
+    Project.moveProject({ sourceIndex, targetIndex });
+    res.sendStatus(200);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send(e.message);
+  }
+});
+
 app.use((req, res, next) => {
   res.status(404).send("404 Internet Error: Invalid API route");
 });

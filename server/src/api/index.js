@@ -65,4 +65,30 @@ export class Project {
 
   }
 
+  static moveProject({ sourceIndex, targetIndex }){
+
+    const expectedFilePath = path.resolve("data/", "projects.json");
+    if (!fs.existsSync(expectedFilePath))
+      throw new Error("Unable to find project list file");
+
+    const projects = require(expectedFilePath);
+    const movedProject = projects[sourceIndex];
+
+    projects.splice(sourceIndex, 1);
+    projects.splice(targetIndex, 0, movedProject);
+
+    try {
+
+      fs.writeFileSync(
+        `${process.cwd()}/data/projects.json`, 
+        toJSONString(projects)
+      );
+
+    } catch (e) {
+      console.error(e);
+      throw new Error("Failed to update project position");
+    }
+
+  }
+
 }
