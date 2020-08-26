@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '../Button';
-import Dialog from '../Dialog';
-import Tooltip from '../Tooltip';
-import { ThemeContext } from '../ThemeProvider';
+import Button from '../../core/Button';
+import Dialog from '../../core/Dialog';
+import Tooltip from '../../core/Tooltip';
+import { ThemeContext } from '../../core/ThemeProvider';
 import { Container } from './styles';
 
 function Navbar() {

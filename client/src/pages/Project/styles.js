@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Page from '../../components/Page';
-import Button from '../../components/Button';
+import Page from '../../core/Page';
+import Button from '../../core/Button';
 
 export const Container = styled(Page)`
   

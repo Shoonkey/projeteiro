@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
-import Error from '../../components/Error';
+import Error from '../../core/Error';
 import ProjectTrack from '../../components/ProjectTrack';
 import { useAPI } from '../../util/api';
 import { Container, Tab } from './styles';

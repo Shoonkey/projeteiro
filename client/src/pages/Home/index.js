@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+import Button from '../../core/Button';
+import Tooltip from '../../core/Tooltip';
+import Dialog from '../../core/Dialog';
 import Navbar from '../../components/Navbar';
-import Button from '../../components/Button';
 import ProjectList from '../../components/ProjectList';
-import Error from '../../components/Error';
-import Tooltip from '../../components/Tooltip';
-import Dialog from '../../components/Dialog';
+import Error from '../../core/Error';
 import NewProjectForm from '../../forms/NewProjectForm';
 import { useAPI } from '../../util/api';
 

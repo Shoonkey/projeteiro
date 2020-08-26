@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { withTheme } from '../ThemeProvider';
+import { withTheme } from '../../core/ThemeProvider';
 
 export const Container = withTheme(
   styled.div`

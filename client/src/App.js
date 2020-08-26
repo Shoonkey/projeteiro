@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import ThemeProvider from './components/ThemeProvider';
+import ThemeProvider from './core/ThemeProvider';
 import { Home, Project } from './pages';
 
 function App() {

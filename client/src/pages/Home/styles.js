@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Page from '../../components/Page';
+import Page from '../../core/Page';
 
 export const Container = styled(Page)`
   display: flex;

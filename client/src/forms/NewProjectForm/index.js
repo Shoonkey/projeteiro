@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import Error from '../../components/Error';
+import Input from '../../core/Input';
+import Button from '../../core/Button';
+import Error from '../../core/Error';
 import { useAPI } from '../../util/api';
 import { Container } from './styles';
 

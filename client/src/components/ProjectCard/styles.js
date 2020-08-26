@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { withTheme } from '../ThemeProvider';
+import { withTheme } from '../../core/ThemeProvider';
 
 // NOTE: the Link component is wrapped here so that the `theme` prop isn't passed down to
 // the DOM element. This prevents the anchor tag from having an attribute theme set to
