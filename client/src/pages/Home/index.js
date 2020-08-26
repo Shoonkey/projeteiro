@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import Error from '../../core/Error';
 import Button from '../../core/Button';
 import Tooltip from '../../core/Tooltip';
 import Dialog from '../../core/Dialog';
 import Navbar from '../../components/Navbar';
 import ProjectList from '../../components/ProjectList';
 import NewProjectForm from '../../forms/NewProjectForm';
+import api, { formatError } from '../../util/api';
 
 import { Container } from './styles';
 
 function Home(){
 
+  const [projects, setProjects] = useState(null);
+  const [error, setError] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    api.get('/project/all')
+      .then(res => res.data)
+      .then(setProjects)
+      .catch(e => setError(formatError(e)));
+  }, []);
 
   return (
     <Container>
@@ -24,10 +35,24 @@ function Home(){
       </Tooltip>
       <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)}>
         <h1 className="title">New project</h1>
-        <NewProjectForm className="description" />
+        <NewProjectForm 
+          className="description" 
+          onSuccess={project => { setDialogOpen(false); setProjects([...projects, project]); }} 
+        />
       </Dialog>
       <main>
-        <ProjectList cols={3} />
+        <h1 className="title">Current projects</h1>
+        { (!projects && !error) && <p>Loading...</p>}
+        { error && <Error message={error} /> }
+        { 
+          projects && (
+            <ProjectList 
+              projects={projects} cols={3} 
+              onDragSuccess={setProjects} 
+              onDragError={setError}
+            />
+          ) 
+        }
       </main>
     </Container>
   );

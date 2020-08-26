@@ -3,18 +3,25 @@ import React, { useState } from 'react';
 import Input from '../../core/Input';
 import Button from '../../core/Button';
 import Error from '../../core/Error';
-import { useAPI } from '../../util/api';
+import api, { formatError } from '../../util/api';
 import { Container } from './styles';
 
-function NewProject(props){
+function NewProject({ onSuccess, ...props }){
 
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
 
-  const { error, callback } = useAPI("POST", "/project/new");
-  
+  const [error, setError] = useState(null);
+
+  const addNewProject = ({ title, type }) => {
+    api.post("/project/new", { title, type })
+      .then(res => res.data)
+      .then(onSuccess)
+      .catch(e => setError(formatError(e)));
+  };
+
   return (
-    <Container onSubmit={() => callback({ title, type })} {...props}>
+    <Container onSubmit={() => addNewProject({ title, type })} {...props}>
       { error && <Error message={error} /> }
       <Input 
         label="Title" size="large"
