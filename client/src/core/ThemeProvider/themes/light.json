@@ -35,5 +35,12 @@
     "closeButton": {
       "color": "#1b1b1b"
     }
+  },
+  "board": {
+    "background": "#ff5757"
+  },
+  "task": {
+    "background": "#c2c2c2",
+    "color": "initial"
   }
 }

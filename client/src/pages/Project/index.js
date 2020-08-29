@@ -38,7 +38,6 @@ function Project({ cardInfo }){
                 <p className="project-type">{project.type}</p>
               </header>
               <div className="project-tab-navigation">
-                <p className="title">Tabs</p>
                 <nav className="tab-list">
                   {
                     tabs.map(tab => (
