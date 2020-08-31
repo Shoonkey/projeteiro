@@ -33,27 +33,31 @@ export const Container = withTheme(
   `
 );
 
-export const Tab = styled(Button)`
+export const Tab = withTheme(
+  styled(Button)`
 
-  background: transparent;
-  color: #999;
+    box-sizing: border-box;
 
-  text-transform: capitalize;
-  outline: none;
-  transition: none;
-  
-  padding: .5em;
-  font-size: 1em;
+    background: ${props => props.theme.tab.background};
+    color: ${props => props.theme.tab.color};
+    border-bottom: solid 1.5px transparent;
 
-  &.active-tab {
-    background: black;
-    color: #eee;
-    border-bottom: 1px #ff5757 solid;
-  }
+    text-transform: capitalize;
+    outline: none;
+    transition: background .4s;
+    
+    padding: .5em;
+    font-size: 1em;
 
-  &:not(.active-tab):hover {
-    background: transparent; /* prevent background from getting Button's default on hover */
-    color: #eee;
-  }
+    &.active-tab, &:not(.active-tab):hover {
+      background: ${props => props.theme.tab.hovered.background};
+      color: ${props => props.theme.tab.hovered.color};
+    }
 
-`;
+    &.active-tab {
+      border-bottom-color: #ff5757;
+    }
+
+
+  `
+);

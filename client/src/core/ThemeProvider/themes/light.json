@@ -1,6 +1,6 @@
 {
   "page": {
-    "background": "#eee",
+    "background": "#fff",
     "color": "#1b1b1b"
   },
   "button": {
@@ -37,10 +37,19 @@
     }
   },
   "board": {
-    "background": "#ff5757"
+    "background": "#5fc8ff",
+    "highlightBorderColor": "#1b1b1b"
   },
   "task": {
-    "background": "#c2c2c2",
+    "background": "#94ecfc",
     "color": "initial"
+  },
+  "tab": {
+    "background": "transparent",
+    "color": "#1b1b1b",
+    "hovered": {
+      "background": "#c2c2c2",
+      "color": "inherit"
+    }
   }
 }

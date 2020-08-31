@@ -6,8 +6,14 @@ export const Container = withTheme(
   styled.div`
     background: ${props => props.theme.board.background};
     color: ${props => props.theme.board.color};
+
+    border: solid 1.5px transparent;
+    border-radius: 10px;
     margin-right: 1em;
     width: max(250px, 25vw);
+
+    transition: border-color .2s;
+    &:hover { border-color: ${props => props.theme.board.highlightBorderColor}; }
 
     > .title {
       text-transform: capitalize;

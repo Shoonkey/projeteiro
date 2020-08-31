@@ -37,11 +37,20 @@
     }
   },
   "board": {
-    "background": "#2b2b2b",
-    "color": "#e2e2e2"
+    "background": "#5fc8ff",
+    "color": "#1b1b1b",
+    "highlightBorderColor": "#F22B29"
   },
   "task": {
-    "background": "#1b1b1b",
+    "background": "#94ecfc",
     "color": "inherit"
+  },
+  "tab": {
+    "background": "transparent",
+    "color": "#999",
+    "hovered": {
+      "background": "black",
+      "color": "#eee"
+    }
   }
 }
