@@ -48,7 +48,7 @@ function focusOnNextFocusable(event){
     let nextElementIdx = currentFocusIdx + delta;
 
     if (nextElementIdx < 0)
-      nextElementIdx = 0;
+      nextElementIdx = event.shiftKey ? focusable.length - 1 : 0;
     if (nextElementIdx >= focusable.length)
       nextElementIdx %= focusable.length;
     
