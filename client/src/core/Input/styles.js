@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { withTheme } from '../ThemeProvider';
 
 // returns the adequate input size, in pixels
 function getInputWidth(size){
@@ -13,33 +14,35 @@ function getInputWidth(size){
   }
 }
 
-export const Container = styled.div`
+export const Container = withTheme(
+  styled.div`
 
-  label, input { display: block; }
+    label, input { display: block; }
 
-  label {
-    margin-bottom: .25em;
-  }
-
-  input {
-
-    font-family: Sarabun;
-
-    width: ${props => getInputWidth(props.size)}px;
-    height: 1.8em;
-
-    background: #2b2b2b;
-    border: solid 1px #e2e2e2;
-
-    text-indent: .2em;
-    color: #e2e2e2;
-
-    transition: border-color .4s;
-
-    &:focus {
-      outline: none;
-      border-color: #ff5757;
+    label {
+      margin-bottom: .25em;
     }
-  }
 
-`;
+    input {
+
+      font-family: Sarabun;
+
+      width: ${props => getInputWidth(props.size)}px;
+      height: 1.8em;
+
+      background: ${props => props.theme.input.background};
+      color: ${props => props.theme.input.color};
+
+      border: solid 1px ${props => props.theme.input.borderColor};
+      text-indent: .2em;
+
+      transition: border-color .4s;
+
+      &:focus {
+        outline: none;
+        border-color: #ff5757;
+      }
+    }
+
+  `
+);

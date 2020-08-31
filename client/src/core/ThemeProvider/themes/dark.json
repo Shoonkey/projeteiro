@@ -52,5 +52,10 @@
       "background": "black",
       "color": "#eee"
     }
+  },
+  "input": {
+    "background": "#2b2b2b",
+    "color": "#e2e2e2",
+    "borderColor": "#e2e2e2"
   }
 }
