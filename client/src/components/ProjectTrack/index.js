@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-import TaskContainer from '../TaskContainer';
+import Board from '../Board';
 import { moveCard } from './util'; 
 import { Container } from './styles';
 
@@ -30,7 +30,7 @@ function ProjectTrack({ track }){
               const columnCards = columns[columnName].map(id => ({ id, ...cards[id] }));
 
               return (
-                <TaskContainer 
+                <Board 
                   key={"column-"+columnName}
                   index={index}
                   columnName={columnName}
