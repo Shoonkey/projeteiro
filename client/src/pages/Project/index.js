@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar';
 import Error from '../../core/Error';
+import Button from '../../core/Button';
 import ProjectTrack from '../../components/ProjectTrack';
 import api, { formatError } from '../../util/api';
 import { Container, Tab } from './styles';
@@ -51,6 +52,12 @@ function Project({ cardInfo }){
                 </nav>
                 <div className="tab-route">
                   { activeTab === "track" && <ProjectTrack track={project.track} /> }
+                  { activeTab === "notes" && (
+                    <div style={{ textAlign: "center" }}>
+                      <p style={{ color: "gray", marginBottom: "1em" }}>No notes have been created yet</p>
+                      <Button>Create one</Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </>
