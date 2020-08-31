@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import clsx from 'clsx';
 
 import Button from '../Button';
 import Tooltip from '../Tooltip';
+import { lockFocusOnDialog } from './util';
 import { Container } from './styles';
 
 function Dialog({ active, onClose, children, className, ...props }){
+
+  const dialogRef = useRef();
+
+  useEffect(() => {
+    if (!active || !dialogRef.current) return;
+    
+    // this function is returned here because it behaves like an effect and it returns its cleanup
+    // function
+    return lockFocusOnDialog(dialogRef.current);
+  });
 
   return (
     <Container 
@@ -13,7 +24,7 @@ function Dialog({ active, onClose, children, className, ...props }){
       onClick={onClose}
       {...props}
     >
-      <div className="dialog" role="dialog" onClick={e => e.stopPropagation()}>
+      <div className="dialog" ref={dialogRef} role="dialog" onClick={e => e.stopPropagation()}>
         <Tooltip content="Close dialog">
           <Button 
             icon="close" 
