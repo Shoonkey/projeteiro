@@ -6,7 +6,7 @@ import Tooltip from '../Tooltip';
 import { lockFocusOnDialog } from './util';
 import { Container } from './styles';
 
-function Dialog({ active, onClose, children, className, ...props }){
+function Dialog({ active, activator, onClose, children, className, ...props }){
 
   const dialogRef = useRef();
 
@@ -18,10 +18,19 @@ function Dialog({ active, onClose, children, className, ...props }){
     return lockFocusOnDialog(dialogRef.current);
   });
 
+  const closeFn = () => {
+
+    if (activator)
+      activator.current.focus();
+
+    onClose();
+
+  }
+
   return (
     <Container 
       className={clsx(className, active && "active")} 
-      onClick={onClose}
+      onClick={closeFn}
       {...props}
     >
       <div className="dialog" ref={dialogRef} role="dialog" onClick={e => e.stopPropagation()}>
@@ -30,7 +39,7 @@ function Dialog({ active, onClose, children, className, ...props }){
             icon="close" 
             ariaLabel="Close dialog"
             className="close-btn" 
-            onClick={onClose} 
+            onClick={closeFn} 
           />
         </Tooltip>
         <div className="dialog-content">

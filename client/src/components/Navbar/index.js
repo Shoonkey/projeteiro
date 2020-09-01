@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from '../../core/Button';
@@ -11,6 +11,7 @@ function Navbar() {
 
   const { themeName, setTheme } = useContext(ThemeContext);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const infoDialogBtnRef = useRef();
 
   return (
     <Container>
@@ -18,13 +19,13 @@ function Navbar() {
         <h1 className="logo">Projeteiro</h1>
       </Link>
       <div className="option-container">
-        <Tooltip content="Info">
-          <Button
-            icon="information-circle-outline"
-            ariaLabel="Information"
-            onClick={() => setDialogOpen(true)}
-          />
-        </Tooltip>
+        <Button
+          icon="information-circle-outline"
+          ariaLabel="Information"
+          ref={infoDialogBtnRef}
+          onClick={() => setDialogOpen(true)}
+        />
+        <Tooltip content="Info" reference={infoDialogBtnRef} />
         <Tooltip content="Change theme">
           <Button 
             icon="contrast-outline" 
@@ -33,7 +34,12 @@ function Navbar() {
           />
         </Tooltip>
       </div>
-      <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)} className="info-dialog">
+      <Dialog 
+        active={dialogOpen} 
+        onClose={() => setDialogOpen(false)} 
+        activator={infoDialogBtnRef}
+        className="info-dialog"
+      >
         <h1 className="title">About <span style={{ color: "#ff5757" }}>Projeteiro</span></h1>
         <div className="description">
           <p>

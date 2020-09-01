@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Error from '../../core/Error';
 import Button from '../../core/Button';
@@ -16,6 +16,7 @@ function Home(){
   const [projects, setProjects] = useState(null);
   const [error, setError] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const addProjectBtnRef = useRef();
 
   useEffect(() => {
     api.get('/project/all')
@@ -27,13 +28,17 @@ function Home(){
   return (
     <Container>
       <Navbar />
-      <Tooltip content="Add new project" placement="left">
-        <Button 
-          fab icon="add-outline" ariaLabel="Add new project" 
-          onClick={() => setDialogOpen(true)}
-        />
-      </Tooltip>
-      <Dialog active={dialogOpen} onClose={() => setDialogOpen(false)}>
+      <Button 
+        fab icon="add-outline" ariaLabel="Add new project" 
+        onClick={() => setDialogOpen(true)}
+        ref={addProjectBtnRef}
+      />
+      <Tooltip content="Add new project" placement="left" reference={addProjectBtnRef} />
+      <Dialog 
+        active={dialogOpen} 
+        onClose={() => setDialogOpen(false)}
+        activator={addProjectBtnRef}
+      >
         <h1 className="title">New project</h1>
         <NewProjectForm 
           className="description" 
