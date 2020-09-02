@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nodemon -r esm",
+    "start:dev": "nodemon -r esm --config nodemon.json",
     "start:prod": "cross-env NODE_ENV=production node -r esm src/index.js"
   },
   "dependencies": {

@@ -53,6 +53,32 @@ app.post('/project/move', (req, res) => {
   }
 });
 
+app.post('/track/board/move', (req, res) => {
+  const { projectId, sourceIndex, targetIndex } = req.body;
+
+  try {
+    Project.moveTrackBoard({ projectId, sourceIndex, targetIndex });
+    res.sendStatus(200);
+  } catch (e){
+    console.error(e);
+    res.status(400).send(e.message);
+  }
+
+});
+
+app.post('/track/task/move', (req, res) => {
+  const { projectId, cardId, source, target } = req.body;
+
+  try {
+    Project.moveTrackTask({ projectId, cardId, source, target });
+    res.sendStatus(200);
+  } catch (e){
+    console.error(e);
+    res.status(400).send(e.message);
+  }
+
+});
+
 app.use((req, res, next) => {
   res.status(404).send("404 Not Found Error: Invalid API route");
 });
