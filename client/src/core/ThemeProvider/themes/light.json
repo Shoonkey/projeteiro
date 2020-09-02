@@ -38,6 +38,7 @@
   },
   "board": {
     "background": "#5fc8ff",
+    "color": "#1b1b1b",
     "highlightBorderColor": "#1b1b1b"
   },
   "task": {
