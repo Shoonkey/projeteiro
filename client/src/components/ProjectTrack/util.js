@@ -1,7 +1,9 @@
+import api, { formatError } from "../../util/api";
+
 export function moveCard(result, getConfig){
 
-  const { source, destination, type } = result;
-  const { list, setList } = getConfig(type);
+  const { draggableId, source, destination, type } = result;
+  const { projectId, list, setList, setError } = getConfig(type);
 
   // Drag was cancelled
   if (!destination) return;
@@ -10,7 +12,7 @@ export function moveCard(result, getConfig){
   if (source.droppableId === destination.droppableId && source.index === destination.index)
       return;
 
-  let newList, droppedItem;
+  let newList, droppedItem, args;
 
   // Modifies the data structure according to where the element was dragged from and dropped at
   switch(type){
@@ -20,18 +22,35 @@ export function moveCard(result, getConfig){
     
       newList[source.droppableId].splice(source.index, 1);
       newList[destination.droppableId].splice(destination.index, 0, droppedItem);
+
+      args = {
+        projectId, 
+        cardId: draggableId, 
+        source: { index: source.index, column: source.droppableId },
+        target: { index: destination.index, column: destination.droppableId }
+      };
+
       break;
-    case "column":
+    case "board":
       newList = [...list];
       droppedItem = newList[source.index];
 
       newList.splice(source.index, 1);
       newList.splice(destination.index, 0, droppedItem);
+
+      args = {
+        projectId,
+        sourceIndex: source.index,
+        targetIndex: destination.index
+      };
+
       break;
     default:
-      throw new Error(`Unrecognized droppable type: "${type}"`);
+      return setError(`Failed to move object due to unknown droppable type: "${type}"`);
   }
 
-  setList(newList);
+  api.post(`/track/${type}/move`, args)
+    .then(() => setList(newList))
+    .catch(e => setError(formatError(e)));
 
 }

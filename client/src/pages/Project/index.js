@@ -51,7 +51,7 @@ function Project({ cardInfo }){
                   }
                 </nav>
                 <div className="tab-route">
-                  { activeTab === "track" && <ProjectTrack track={project.track} /> }
+                  { activeTab === "track" && <ProjectTrack projectId={id} track={project.track} /> }
                   { activeTab === "notes" && (
                     <div style={{ textAlign: "center" }}>
                       <p style={{ color: "gray", marginBottom: "1em" }}>No notes have been created yet</p>
