@@ -35,6 +35,7 @@ function ProjectTrack({ projectId, track }){
               return (
                 <Board 
                   key={"column-"+columnName}
+                  projectId={projectId}
                   index={index}
                   columnName={columnName}
                   cards={columnCards}

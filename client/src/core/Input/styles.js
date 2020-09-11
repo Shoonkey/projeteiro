@@ -27,7 +27,7 @@ export const Container = withTheme(
 
       font-family: Sarabun;
 
-      width: ${props => getInputWidth(props.size)}px;
+      width: min(${props => getInputWidth(props.size)}px, 80%);
       height: 1.8em;
 
       background: ${props => props.theme.input.background};
