@@ -10,6 +10,8 @@ export const Container = withTheme(
     border: solid 1.5px transparent;
     border-radius: 10px;
     margin-right: 1em;
+
+    flex-shrink: 0;
     width: max(250px, 25vw);
 
     transition: border-color .2s;
