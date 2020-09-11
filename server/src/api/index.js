@@ -159,4 +159,34 @@ export class Project {
 
   }
 
+  static changeBoardTitle({ projectId, oldTitle, newTitle }){
+
+    const expectedFilePath = path.resolve("data/", `project-${projectId}.json`);
+    if (!fs.existsSync(expectedFilePath))
+      throw new Error("Unable to find project w/ ID " + projectId);
+
+    const project = require(expectedFilePath);
+    
+    const { columns, columnOrder } = project.track;
+
+    // Add a new key to the columns with the data of the project and remove the previous one
+    columns[newTitle] = columns[oldTitle];
+    delete columns[oldTitle];
+
+    // Replace the old title in `columnOrder` with the new title
+    let oldProjectIdx = columnOrder.indexOf(oldTitle);
+    columnOrder.splice(oldProjectIdx, 1, newTitle);
+
+    console.log(columns);
+    console.log(project.track.columns);
+
+    try {
+      fs.writeFileSync(expectedFilePath, toJSONString(project));
+    } catch (e) {
+      console.error(e);
+      throw new Error("Failed to update board position");
+    }
+
+  }
+
 }

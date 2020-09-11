@@ -68,6 +68,19 @@ app.post('/track/board/move', (req, res) => {
 
 });
 
+app.post('/track/board/changeTitle', (req, res) => {
+  const { projectId, oldTitle, newTitle } = req.body;
+
+  try {
+    Project.changeBoardTitle({ projectId, oldTitle, newTitle });
+    res.sendStatus(200);
+  } catch (e) {
+    console.error(e);
+    res.status(400).send(e.message);
+  }
+
+});
+
 app.post('/track/task/move', (req, res) => {
   const { projectId, cardId, source, target } = req.body;
 
