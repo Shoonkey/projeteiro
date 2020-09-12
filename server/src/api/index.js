@@ -129,6 +129,31 @@ export class Project {
 
   }
 
+  static editTrackTask({ projectId, cardId, title, description }){
+
+    const expectedFilePath = path.resolve("data/", `project-${projectId}.json`);
+    if (!fs.existsSync(expectedFilePath))
+      throw new Error("Unable to find project w/ ID " + id);
+    
+    const project = require(expectedFilePath);
+
+    const card = project.track.cards[cardId];
+
+    if (!card)
+      throw new Error(`Card "${cardId}" not found`);
+    
+    card.title = title;
+    card.description = description;
+    
+    try {
+      fs.writeFileSync(expectedFilePath, toJSONString(project));
+    } catch (e) {
+      console.error(e);
+      throw new Error("Failed to update task info");
+    }
+
+  }
+
   static moveTrackBoard({ projectId, sourceIndex, targetIndex }){
 
     const expectedFilePath = path.resolve("data/", `project-${projectId}.json`);
