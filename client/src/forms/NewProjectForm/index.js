@@ -6,7 +6,7 @@ import Error from '../../core/Error';
 import api, { formatError } from '../../util/api';
 import { Container } from './styles';
 
-function NewProject({ onSuccess, ...props }){
+function NewProjectForm({ onSuccess, ...props }){
 
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
@@ -37,4 +37,4 @@ function NewProject({ onSuccess, ...props }){
 
 };
 
-export default NewProject;
+export default NewProjectForm;
