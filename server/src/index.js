@@ -95,10 +95,10 @@ app.post('/track/task/move', (req, res) => {
 });
 
 app.post('/track/task/edit', (req, res) => {
-  const { title, description } = req.body;
+  const { projectId, cardId, title, description } = req.body;
 
   try {
-    Project.editTrackTask({ title, description });
+    Project.editTrackTask({ projectId, cardId, title, description });
     res.sendStatus(200);
   } catch (e){
     console.error(e);
