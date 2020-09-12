@@ -13,7 +13,7 @@ function NewProjectForm({ onSuccess, ...props }){
 
   const [error, setError] = useState(null);
 
-  const addNewProject = ({ title, type }) => {
+  const addNewProject = () => {
     api.post("/project/new", { title, type })
       .then(res => res.data)
       .then(onSuccess)
@@ -21,7 +21,7 @@ function NewProjectForm({ onSuccess, ...props }){
   };
 
   return (
-    <Container onSubmit={() => addNewProject({ title, type })} {...props}>
+    <Container onSubmit={addNewProject} {...props}>
       { error && <Error message={error} /> }
       <Input 
         label="Title" size="large"
