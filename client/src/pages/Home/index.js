@@ -9,7 +9,6 @@ import NewProjectDialog from '../../dialogs/NewProjectDialog';
 import api, { formatError } from '../../util/api';
 
 import { Container } from './styles';
-import TaskEditDialog from '../../dialogs/TaskEditDialog';
 
 function Home(){
 
