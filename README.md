@@ -1,5 +1,7 @@
 # Projeteiro
 
-This website is a tool I'm building to keep track of my own projects. My intent is for it to feel a bit different visually than tools built for general purpose, like Trello. 
+A task tracking website.
 
-Also, the idea is that everything would be stored locally, which should give the user control over all stored data, which might be cool as well.
+The idea is that everything is stored locally, in plain JSON files that can be seen and edited
+manually if needed. There's not really a solid reason to not use a database for it, I just wanted
+to try and see what it would look like to rely on plain files.
